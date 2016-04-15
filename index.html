@@ -1,1 +1,134 @@
-"Hello World" 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>S Y N E R G A</title>
+    <style media="screen">
+      body {
+        background-color: #fff;
+        background-image:
+          -webkit-linear-gradient(left, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+          -webkit-linear-gradient(#eee .1em, transparent .1em);
+        background-image:
+          -o-linear-gradient(left, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+          -o-linear-gradient(#eee .1em, transparent .1em);
+        background-image:
+          linear-gradient(to right, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+          linear-gradient(#eee .1em, transparent .1em);
+        background-size: 100% 1.2em;
+      }
+      .logo-scrabble {
+        text-align: center;
+        margin-top: 200px;
+      }
+      .scrabble-word {
+        display: inline-block;
+        margin: 0 15px;
+      }
+      .scrabble-letter {
+        position: relative;
+        width: 90px;
+      	height: 100px;
+      	display: inline-block;
+      	background: #e4d095;
+      	color: #2a1f1b;
+      	border-radius: 4px;
+      	font-size: 60px;
+      	font-weight: 400;
+      	line-height: 100px;
+      	margin: 10px 3px;
+      	text-align: center;
+      	cursor: default;
+      	/* font-family: "Spinnaker", Arial, sans-serif; */
+        font-family: sans-serif;
+      	text-shadow:
+      		1px 1px 1px rgba(255, 255, 255, 0.9),
+      		0 -1px 1px rgba(255,255,255,0.2);
+      	text-transform: uppercase;
+      	box-shadow:
+      		1px 7px 15px rgba(0,0,0,0.8),
+      		inset 3px 0 2px rgba(255,255,255,0.4),
+      		inset 0 3px 0px rgba(255,255,255,0.5),
+      		inset -2px -3px 0px rgba(143,128,82,0.6);
+      }
+      .scrabble-letter::after {
+        color: #666;
+        font-family: sans-serif;
+        font-size: 20px;
+        position: absolute;
+        right: 15%;
+        bottom: 15%;
+        transform: translate(50%,50%);
+      }
+      .scrabble-letter-s::after,
+        .scrabble-letter-n::after,
+        .scrabble-letter-e::after,
+        .scrabble-letter-r::after,
+        .scrabble-letter-a::after
+        {
+          content: "1";
+        }
+      .scrabble-letter-g::after {
+        content: "2";
+      }
+      .scrabble-letter-y::after {
+        content: "4";
+      }
+      .logo-dictionary {
+        text-align: center;
+        width: 500px;
+        margin: 0 auto;
+        font-size: 50px;
+      }
+      .spelling-word {
+        display: inline-block;
+        width: 100%;
+        font-size: 1em;
+      }
+      .spelling-syllable-stressed {
+        font-weight: bold;
+      }
+      .spelling-uh {
+        font-style: italic;
+      }
+      .dictionary-word-type {
+        display: inline-block;
+        width: 100%;
+        font-size: 0.8em;
+        font-style: italic;
+        text-align: left;
+      }
+      .dictionary-meaning {
+        display: inline-block;
+        width: 100%;
+        font-size: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="logo-scrabble">
+      <div class="scrabble-word">
+          <span class="scrabble-letter scrabble-letter-s">S</span>
+          <span class="scrabble-letter scrabble-letter-y">Y</span>
+          <span class="scrabble-letter scrabble-letter-n">N</span>
+          <span class="scrabble-letter scrabble-letter-e">E</span>
+          <span class="scrabble-letter scrabble-letter-r">R</span>
+          <span class="scrabble-letter scrabble-letter-g">G</span>
+          <span class="scrabble-letter scrabble-letter-a">A</span>
+      </div>
+    </h2>
+    <div class="logo-dictionary">
+      <div class="spelling-word">
+        <span class="spelling-squarebracket">[</span>
+        <span class="spelling-syllable-stressed">sin</span>
+        <span class="spelling-separator">-</span>
+        <span class="spelling-syllable">er</span>
+        <span class="spelling-separator">-</span>
+        <span class="spelling-syllable">g<span class="spelling-uh">uh</span></span>
+        <span class="spelling-squarebracket">]</span>
+      </div>
+      <div class="dictionary-word-type">noun</div>
+      <div class="dictionary-meaning">A set of articles or equipment needed for a specific purpose.</div>
+    </div>
+  </body>
+</html>
