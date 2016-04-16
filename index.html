@@ -1,60 +1,78 @@
 <!DOCTYPE html>
-<html>
+<!-- Conditional class for older versions of IE -->
+<!--[if lt IE 9 & !IEMobile]><html class="ie8"><![endif]-->
+<!--[if gt IE 8 | IEMobile]><!--><html><!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <title>S Y N E R G A</title>
-    <style media="screen">
+    <style>
+      html.ie {
+        font-size: 16px;
+      }
+     @media (min-width: 0) {
+        html {
+          font-size: 6px;
+        }
+      }
+      @media (min-width: 380px) {
+        html {
+          font-size: 8px;
+        }
+      }
+      @media (min-width: 480px) {
+        html {
+          font-size: 10px;
+        }
+      }
+      @media (min-width: 768px) {
+        html {
+          font-size: 16px;
+        }
+      }
       body {
         background-color: #fff;
         background-image:
-          -webkit-linear-gradient(left, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-          -webkit-linear-gradient(#eee .1em, transparent .1em);
-        background-image:
-          -o-linear-gradient(left, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-          -o-linear-gradient(#eee .1em, transparent .1em);
-        background-image:
-          linear-gradient(to right, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+          linear-gradient(to right, transparent 4.9em, #abcdef 4.9em, #abcdef 5em, transparent 5em),
           linear-gradient(#eee .1em, transparent .1em);
-        background-size: 100% 1.2em;
+        background-size: 100% 1.25em;
       }
       .logo-scrabble {
+        font-size: 1rem;
         text-align: center;
-        margin-top: 200px;
+        margin-top: 5.5rem;
       }
       .scrabble-word {
         display: inline-block;
-        margin: 0 15px;
       }
       .scrabble-letter {
-        position: relative;
-        width: 90px;
-      	height: 100px;
-      	display: inline-block;
-      	background: #e4d095;
-      	color: #2a1f1b;
-      	border-radius: 4px;
-      	font-size: 60px;
-      	font-weight: 400;
-      	line-height: 100px;
-      	margin: 10px 3px;
-      	text-align: center;
-      	cursor: default;
-      	/* font-family: "Spinnaker", Arial, sans-serif; */
+        font-size: 3.75em;
+      	font-weight: normal;
         font-family: sans-serif;
+        position: relative;
+        display: inline-block;
+        text-align: center;
+      	cursor: default;
+        background: #e4d095;
+      	color: #2a1f1b;
+        line-height: 1.575em;
+        width: 1.475em;
+      	height: 1.625em;
+      	border-radius: 0.0625em;
+      	margin: 0.25em 0.0725em;
       	text-shadow:
-      		1px 1px 1px rgba(255, 255, 255, 0.9),
-      		0 -1px 1px rgba(255,255,255,0.2);
+      		0.015em 0.015em 0.015em rgba(255, 255, 255, 0.9),
+      		0 -0.0125em 0.0125em rgba(255,255,255,0.2);
       	text-transform: uppercase;
       	box-shadow:
-      		1px 7px 15px rgba(0,0,0,0.8),
-      		inset 3px 0 2px rgba(255,255,255,0.4),
-      		inset 0 3px 0px rgba(255,255,255,0.5),
-      		inset -2px -3px 0px rgba(143,128,82,0.6);
+      		0.0125em 0.125em 0.25em rgba(0,0,0,0.8),
+      		inset 0.0525em 0 0.0125em rgba(255,255,255,0.4),
+      		inset 0 0.0525em 0 rgba(255,255,255,0.5),
+      		inset -0.0275em -0.0275em 0 rgba(143,128,82,0.6);
       }
       .scrabble-letter::after {
-        color: #666;
+        color: #777;
         font-family: sans-serif;
-        font-size: 20px;
+        font-size: 0.325em;
         position: absolute;
         right: 15%;
         bottom: 15%;
@@ -64,26 +82,20 @@
         .scrabble-letter-n::after,
         .scrabble-letter-e::after,
         .scrabble-letter-r::after,
-        .scrabble-letter-a::after
-        {
-          content: "1";
-        }
-      .scrabble-letter-g::after {
-        content: "2";
-      }
-      .scrabble-letter-y::after {
-        content: "4";
-      }
+        .scrabble-letter-a::after { content: "1"; }
+      .scrabble-letter-g::after   { content: "2"; }
+      .scrabble-letter-y::after   { content: "4"; }
+
       .logo-dictionary {
+        font-size: 1rem;
         text-align: center;
-        width: 500px;
-        margin: 0 auto;
-        font-size: 50px;
+        width: 31.5rem;
+        margin: 2em auto;
       }
       .spelling-word {
         display: inline-block;
         width: 100%;
-        font-size: 1em;
+        font-size: 3em;
       }
       .spelling-syllable-stressed {
         font-weight: bold;
@@ -91,17 +103,149 @@
       .spelling-uh {
         font-style: italic;
       }
+
       .dictionary-word-type {
         display: inline-block;
+        position: relative;
         width: 100%;
-        font-size: 0.8em;
+        font-size: 2.5em;
         font-style: italic;
         text-align: left;
+        margin-top: 0.5em;
       }
+      .dictionary-word-type a {
+        display: inline-block;
+        text-decoration: none;
+        /*background-color: rgba(127,127,227,0.2);*/
+        color: rgba(0,0,200,0.7);
+        padding: 0 0.2em;
+        border-radius: 0.125em;
+        line-height: 1.1em;
+      }
+      .word-noun-note {
+        position: absolute;
+        display: inline-block;
+        text-align: center;
+        font-size: 0.625em;
+        font-family: cursive;
+        color: rgba(200,0,0,0.7);
+        width: 14em;
+        top: -3.4em;
+        left: -6.2em;
+        transform: rotate(-16deg);
+      }
+      .word-noun-arrow {
+        width: 1.2em; height: 1.2em;
+        position: absolute;
+        top: -1.225em;
+        left: 0.6em;
+        transform: rotate(6deg) scale(-1,-1);
+      }
+      .word-noun-arrow use {
+        fill: none;
+        stroke: red;
+        stroke-width: 4;
+      }
+
       .dictionary-meaning {
         display: inline-block;
-        width: 100%;
-        font-size: 0.5em;
+        width: 85%;
+        font-size: 1.5em;
+        margin-top: 1em;
+        line-height: 1.8em;
+      }
+      .dictionary-meaning a {
+        display: inline-block;
+        /*background-color: rgba(0,0,255,0.2);*/
+        border-radius: 0.125em;
+        color: rgba(0,0,200,0.7);
+        padding: 0 0.2em;
+        line-height: 1.4em;
+        text-decoration: none;
+      }
+
+      .word-articles {
+        position: relative;
+      }
+      .word-articles-note {
+        position: absolute;
+        display: inline-block;
+        text-align: center;
+        font-size: 0.9em;
+        font-family: cursive;
+        color: rgba(200,0,0,0.7);
+        width: 14em;
+        top: 4.8em;
+        left: -8.5em;
+        transform: rotate(16deg);
+      }
+      .word-articles-arrow {
+        width: 3em; height: 3em;
+        position: absolute;
+        top: 1.375em;
+        left: -1.6em;
+        transform: rotate(-6deg) scaleX(-1);
+      }
+      .word-articles-arrow use {
+        fill: none;
+        stroke: red;
+        stroke-width: 3;
+      }
+
+      .word-equipment {
+        position: relative;
+      }
+      .word-equipment-note {
+        position: absolute;
+        display: inline-block;
+        font-family: cursive;
+        color: rgba(200,0,0,0.7);
+        width: 14em;
+        top: -3.2em;
+        left: -4.7em;
+        transform: rotate(3deg);
+      }
+      .word-equipment-arrow {
+        width: 0.8em; height: 1.2em;
+        position: absolute;
+        top: -1.4em;
+        left: 1.6em;
+        transform: rotate(210deg) scaleY(1);
+      }
+      .word-equipment-arrow use {
+        fill: none;
+        stroke: red;
+        stroke-width: 6;
+      }
+
+      .word-purpose {
+        position: relative;
+      }
+      .word-purpose-note {
+        position: absolute;
+        display: inline-block;
+        font-family: cursive;
+        color: rgba(200,0,0,0.7);
+        width: 14em;
+        top: 2.4em;
+        left: -1.8em;
+        transform: rotate(-6deg);
+      }
+      .word-purpose-arrow {
+        width: 1em; height: 3em;
+        position: absolute;
+        top: 0.5em;
+        left: 1.6em;
+        transform: rotate(2deg);
+      }
+      .word-purpose-arrow use {
+        fill: none;
+        stroke: red;
+        stroke-width: 6;
+      }
+
+      #svg-curved-arrow path {
+        all: inherit;
       }
     </style>
   </head>
@@ -127,8 +271,53 @@
         <span class="spelling-syllable">g<span class="spelling-uh">uh</span></span>
         <span class="spelling-squarebracket">]</span>
       </div>
-      <div class="dictionary-word-type">noun</div>
-      <div class="dictionary-meaning">A set of articles or equipment needed for a specific purpose.</div>
+      <div class="dictionary-word-type">
+        <a href="#">noun</a>
+        <span class="word-noun-note">
+          &lt; About this Site &gt;
+        </span>
+        <svg class="word-noun-arrow">
+          <use xlink:href="#svg-curved-arrow" />
+        </svg>
+      </div>
+      <div class="dictionary-meaning">
+        A set of
+        <span class="word-articles">
+          <a href="#">articles</a>
+          <span class="word-articles-note">
+            &lt; Words and Thoughts &gt;
+          </span>
+          <svg class="word-articles-arrow">
+            <use xlink:href="#svg-curved-arrow" />
+          </svg>
+        </span>
+          or
+        <span class="word-equipment">
+          <a href="#">equipment</a>
+          <span class="word-equipment-note">
+            &lt; Software and Hardware &gt;
+          </span>
+          <svg class="word-equipment-arrow">
+            <use xlink:href="#svg-curved-arrow" />
+          </svg>
+        </span>
+          needed for a specific
+        <span class="word-purpose">
+          <a href="#">purpose</a>
+          <span class="word-purpose-note">
+            &lt; Projects and Works &gt;
+          </span>
+          <svg class="word-purpose-arrow">
+            <use xlink:href="#svg-curved-arrow" />
+          </svg>
+        </span>.
+      </div>
     </div>
+    <svg style="display: none;">
+      <symbol id="svg-curved-arrow" viewbox="0 0 75 100">
+        <path id="svg-curved-arrow-body" d="M 4.5,1.5 C 2,40 14,74 65,95" fill="none" stroke="black" stroke-width="3" />
+        <path id="svg-curved-arrow-head" d="m 49,97 17.5,-0.35 -8,-16.5"  fill="none" stroke="black" stroke-width="3" />
+      </symbol>
+    </svg>
   </body>
 </html>
