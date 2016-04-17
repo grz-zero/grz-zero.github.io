@@ -6,29 +6,11 @@
     <meta charset="utf-8">
     <title>S Y N E R G A</title>
     <style>
-      html.ie {
-        font-size: 16px;
-      }
-     @media (min-width: 0) {
-        html {
-          font-size: 6px;
-        }
-      }
-      @media (min-width: 380px) {
-        html {
-          font-size: 8px;
-        }
-      }
-      @media (min-width: 480px) {
-        html {
-          font-size: 10px;
-        }
-      }
-      @media (min-width: 768px) {
-        html {
-          font-size: 16px;
-        }
-      }
+      html.ie { font-size: 16px; }
+      @media (min-width: 0)     { html { font-size: 6px;  } }
+      @media (min-width: 380px) { html { font-size: 8px;  } }
+      @media (min-width: 480px) { html { font-size: 10px; } }
+      @media (min-width: 768px) { html { font-size: 16px; } }
       body {
         background-color: #fff;
         background-image:
@@ -36,288 +18,150 @@
           linear-gradient(#eee .1em, transparent .1em);
         background-size: 100% 1.25em;
       }
-      .logo-scrabble {
+
+      #svg-curved-arrow path { all: inherit; }
+
+      .logo-scrabble,
+        .logo-definition {
         font-size: 1rem;
         text-align: center;
-        margin-top: 5.5rem;
+        width: 45rem;
+        margin: 3rem auto;
       }
-      .scrabble-word {
-        display: inline-block;
-      }
+
+      .scrabble-word,
+        .scrabble-letter,
+        .definition-word,
+        .definition-word-type,
+        .definition-word-type a,
+        .definition-meaning,
+        .definition-meaning a { display: inline-block; position: relative; }
+
       .scrabble-letter {
-        font-size: 3.75em;
-      	font-weight: normal;
+        width: 1.475em; height: 1.625em;
         font-family: sans-serif;
-        position: relative;
-        display: inline-block;
+        font-weight: normal;
+        font-size: 3.75em;
+        line-height: 1.575em;
         text-align: center;
       	cursor: default;
+        color: #2a1f1b;
         background: #e4d095;
-      	color: #2a1f1b;
-        line-height: 1.575em;
-        width: 1.475em;
-      	height: 1.625em;
       	border-radius: 0.0625em;
-      	margin: 0.25em 0.0725em;
-      	text-shadow:
-      		0.015em 0.015em 0.015em rgba(255, 255, 255, 0.9),
-      		0 -0.0125em 0.0125em rgba(255,255,255,0.2);
-      	text-transform: uppercase;
+      	text-shadow: 0.015em 0.015em 0.015em rgba(255, 255, 255, 0.9), 0 -0.0125em 0.0125em rgba(255,255,255,0.2);
       	box-shadow:
       		0.0125em 0.125em 0.25em rgba(0,0,0,0.8),
       		inset 0.0525em 0 0.0125em rgba(255,255,255,0.4),
       		inset 0 0.0525em 0 rgba(255,255,255,0.5),
       		inset -0.0275em -0.0275em 0 rgba(143,128,82,0.6);
+        margin: 0.25em 0.0725em;
       }
       .scrabble-letter::after {
-        color: #777;
+        position: absolute;
+        right: 0; bottom: 0;
         font-family: sans-serif;
         font-size: 0.325em;
-        position: absolute;
-        right: 15%;
-        bottom: 15%;
-        transform: translate(50%,50%);
+        color: #777;
+        transform: translate(-0.425em,1.675em);
+        content: "1";
       }
-      .scrabble-letter-s::after,
-        .scrabble-letter-n::after,
-        .scrabble-letter-e::after,
-        .scrabble-letter-r::after,
-        .scrabble-letter-a::after { content: "1"; }
-      .scrabble-letter-g::after   { content: "2"; }
-      .scrabble-letter-y::after   { content: "4"; }
+      .scrabble-value-2::after   { content: "2"; }
+      .scrabble-value-4::after   { content: "4"; }
 
-      .logo-dictionary {
-        font-size: 1rem;
-        text-align: center;
-        width: 31.5rem;
-        margin: 2em auto;
-      }
-      .spelling-word {
-        display: inline-block;
-        width: 100%;
-        font-size: 3em;
-      }
-      .spelling-syllable-stressed {
-        font-weight: bold;
-      }
-      .spelling-uh {
-        font-style: italic;
-      }
-
-      .dictionary-word-type {
-        display: inline-block;
-        position: relative;
-        width: 100%;
+      .definition-word { font-size: 3em; }
+      .syllable-stressed { font-weight: bold; }
+      .pronunciation-uh { font-style: italic; }
+      .definition-word-type {
+        width: 75%;
         font-size: 2.5em;
         font-style: italic;
         text-align: left;
         margin-top: 0.5em;
       }
-      .dictionary-word-type a {
-        display: inline-block;
-        text-decoration: none;
-        /*background-color: rgba(127,127,227,0.2);*/
-        color: rgba(0,0,200,0.7);
-        padding: 0 0.2em;
-        border-radius: 0.125em;
-        line-height: 1.1em;
+      .definition-meaning {
+        width: 70%;
+        font-size: 1.5em;
+        line-height: 1.4em;
+        margin: 1em 0;
       }
-      .word-noun-note {
-        position: absolute;
-        display: inline-block;
+      .definition-word-type a,
+        .definition-meaning a { text-decoration: none; color: rgba(68, 68, 200, 0.8); padding: 0 0.2em; line-height: 1.5rem; }
+
+      .word-link { position: relative; }
+      .word-link-note {
         text-align: center;
-        font-size: 0.625em;
         font-family: cursive;
         color: rgba(200,0,0,0.7);
-        width: 14em;
-        top: -3.4em;
-        left: -6.2em;
-        transform: rotate(-16deg);
       }
-      .word-noun-arrow {
-        width: 1.2em; height: 1.2em;
-        position: absolute;
-        top: -1.225em;
-        left: 0.6em;
+      .word-link-note,
+        .word-link-arrow { position: absolute; }
+      .word-link a:hover { color: red; }
+      .word-link a:hover .word-link-note,
+        .word-link a:hover .word-link-arrow {
+        display: inline-block;
+      }
+      .word-link-arrow use { fill: none; stroke: red; }
+      #word-articles-note,
+        #word-equipment-note,
+        #word-purpose-note { font-size: 1rem; width: 12rem; }
+      #word-noun-note      { top:   -4em; left:   -3em; transform: rotate(-16deg); font-size: 1rem; width: 8rem; }
+      #word-articles-note  { top:  4.3em; left: -7.5em; transform: rotate( 16deg); }
+      #word-equipment-note { top: -3.6em; left:   -3em; transform: rotate(  3deg); }
+      #word-purpose-note   { top:  3.9em; left:    0;   transform: rotate( -6deg); }
+      #word-noun-arrow {
+        width: 1em; height: 1em;
+        top: -1em; left: 0.6em;
         transform: rotate(6deg) scale(-1,-1);
       }
-      .word-noun-arrow use {
-        fill: none;
-        stroke: red;
-        stroke-width: 4;
-      }
-
-      .dictionary-meaning {
-        display: inline-block;
-        width: 85%;
-        font-size: 1.5em;
-        margin-top: 1em;
-        line-height: 1.8em;
-      }
-      .dictionary-meaning a {
-        display: inline-block;
-        /*background-color: rgba(0,0,255,0.2);*/
-        border-radius: 0.125em;
-        color: rgba(0,0,200,0.7);
-        padding: 0 0.2em;
-        line-height: 1.4em;
-        text-decoration: none;
-      }
-
-      .word-articles {
-        position: relative;
-      }
-      .word-articles-note {
-        position: absolute;
-        display: inline-block;
-        text-align: center;
-        font-size: 0.9em;
-        font-family: cursive;
-        color: rgba(200,0,0,0.7);
-        width: 14em;
-        top: 4.8em;
-        left: -8.5em;
-        transform: rotate(16deg);
-      }
-      .word-articles-arrow {
-        width: 3em; height: 3em;
-        position: absolute;
-        top: 1.375em;
-        left: -1.6em;
+      #word-noun-arrow use { stroke-width: 4; }
+      #word-articles-arrow {
+        width: 2em; height: 2em;
+        top: 1em; left: -0.5em;
         transform: rotate(-6deg) scaleX(-1);
       }
-      .word-articles-arrow use {
-        fill: none;
-        stroke: red;
-        stroke-width: 3;
-      }
-
-      .word-equipment {
-        position: relative;
-      }
-      .word-equipment-note {
-        position: absolute;
-        display: inline-block;
-        font-family: cursive;
-        color: rgba(200,0,0,0.7);
-        width: 14em;
-        top: -3.2em;
-        left: -4.7em;
-        transform: rotate(3deg);
-      }
-      .word-equipment-arrow {
-        width: 0.8em; height: 1.2em;
-        position: absolute;
-        top: -1.4em;
-        left: 1.6em;
+      #word-articles-arrow use { stroke-width: 3; }
+      #word-equipment-arrow {
+        width: 1.2em; height: 1.2em;
+        top: -1.2em; left: 1.6em;
         transform: rotate(210deg) scaleY(1);
       }
-      .word-equipment-arrow use {
-        fill: none;
-        stroke: red;
-        stroke-width: 6;
-      }
-
-      .word-purpose {
-        position: relative;
-      }
-      .word-purpose-note {
-        position: absolute;
-        display: inline-block;
-        font-family: cursive;
-        color: rgba(200,0,0,0.7);
-        width: 14em;
-        top: 2.4em;
-        left: -1.8em;
-        transform: rotate(-6deg);
-      }
-      .word-purpose-arrow {
-        width: 1em; height: 3em;
-        position: absolute;
-        top: 0.5em;
-        left: 1.6em;
+      #word-equipment-arrow use { stroke-width: 6; }
+      #word-purpose-arrow {
+        width: 1.5em; height: 1.5em;
+        top: 1.1em; left: 1.8em;
         transform: rotate(2deg);
       }
-      .word-purpose-arrow use {
-        fill: none;
-        stroke: red;
-        stroke-width: 6;
-      }
-
-      #svg-curved-arrow path {
-        all: inherit;
-      }
+      #word-purpose-arrow use { stroke-width: 4; }
     </style>
   </head>
   <body>
-    <h2 class="logo-scrabble">
-      <div class="scrabble-word">
-          <span class="scrabble-letter scrabble-letter-s">S</span>
-          <span class="scrabble-letter scrabble-letter-y">Y</span>
-          <span class="scrabble-letter scrabble-letter-n">N</span>
-          <span class="scrabble-letter scrabble-letter-e">E</span>
-          <span class="scrabble-letter scrabble-letter-r">R</span>
-          <span class="scrabble-letter scrabble-letter-g">G</span>
-          <span class="scrabble-letter scrabble-letter-a">A</span>
-      </div>
-    </h2>
-    <div class="logo-dictionary">
-      <div class="spelling-word">
-        <span class="spelling-squarebracket">[</span>
-        <span class="spelling-syllable-stressed">sin</span>
-        <span class="spelling-separator">-</span>
-        <span class="spelling-syllable">er</span>
-        <span class="spelling-separator">-</span>
-        <span class="spelling-syllable">g<span class="spelling-uh">uh</span></span>
-        <span class="spelling-squarebracket">]</span>
-      </div>
-      <div class="dictionary-word-type">
-        <a href="#">noun</a>
-        <span class="word-noun-note">
-          &lt; About this Site &gt;
-        </span>
-        <svg class="word-noun-arrow">
-          <use xlink:href="#svg-curved-arrow" />
-        </svg>
-      </div>
-      <div class="dictionary-meaning">
-        A set of
-        <span class="word-articles">
-          <a href="#">articles</a>
-          <span class="word-articles-note">
-            &lt; Words and Thoughts &gt;
-          </span>
-          <svg class="word-articles-arrow">
-            <use xlink:href="#svg-curved-arrow" />
-          </svg>
-        </span>
-          or
-        <span class="word-equipment">
-          <a href="#">equipment</a>
-          <span class="word-equipment-note">
-            &lt; Software and Hardware &gt;
-          </span>
-          <svg class="word-equipment-arrow">
-            <use xlink:href="#svg-curved-arrow" />
-          </svg>
-        </span>
-          needed for a specific
-        <span class="word-purpose">
-          <a href="#">purpose</a>
-          <span class="word-purpose-note">
-            &lt; Projects and Works &gt;
-          </span>
-          <svg class="word-purpose-arrow">
-            <use xlink:href="#svg-curved-arrow" />
-          </svg>
-        </span>.
-      </div>
-    </div>
     <svg style="display: none;">
       <symbol id="svg-curved-arrow" viewbox="0 0 75 100">
-        <path id="svg-curved-arrow-body" d="M 4.5,1.5 C 2,40 14,74 65,95" fill="none" stroke="black" stroke-width="3" />
-        <path id="svg-curved-arrow-head" d="m 49,97 17.5,-0.35 -8,-16.5"  fill="none" stroke="black" stroke-width="3" />
+        <path d="M 4.5,1.5 C 2,40 14,74 65,95" fill="none" stroke="black" stroke-width="3" />
+        <path d="m 49,97 17.5,-0.35 -8,-16.5"  fill="none" stroke="black" stroke-width="3" />
       </symbol>
     </svg>
+    <h2 class="logo-scrabble">
+      <div class="scrabble-word">
+          <span class="scrabble-letter">S</span>
+          <span class="scrabble-letter scrabble-value-4">Y</span>
+          <span class="scrabble-letter">N</span>
+          <span class="scrabble-letter">E</span>
+          <span class="scrabble-letter">R</span>
+          <span class="scrabble-letter scrabble-value-2">G</span>
+          <span class="scrabble-letter">A</span>
+      </div>
+    </h2>
+    <div class="logo-definition">
+      <div class="definition-word">
+        [ <span class="syllable-stressed">sin</span> - er - g<span class="pronunciation-uh">uh</span> ]
+      </div>
+      <div class="definition-word-type">
+        <span class="word-link"><a href="#">noun<span class="word-link-note" id="word-noun-note"> about this site </span><svg class="word-link-arrow" id="word-noun-arrow"><use xlink:href="#svg-curved-arrow" /></svg></a></span>
+      </div>
+      <div class="definition-meaning">
+        A set of <span class="word-link"><a href="#">articles<span class="word-link-note" id="word-articles-note"> words and thoughts </span><svg class="word-link-arrow" id="word-articles-arrow"><use xlink:href="#svg-curved-arrow" /></svg></a></span> or <span class="word-link"><a href="#">equipment<span class="word-link-note" id="word-equipment-note"> software and tools </span><svg class="word-link-arrow" id="word-equipment-arrow"><use xlink:href="#svg-curved-arrow" /></svg></a></span> needed for a specific <span class="word-link"><a href="#">purpose<span class="word-link-note" id="word-purpose-note"> projects and works </span><svg class="word-link-arrow" id="word-purpose-arrow"><use xlink:href="#svg-curved-arrow" /></svg></a></span>.
+      </div>
+    </div>
   </body>
 </html>
