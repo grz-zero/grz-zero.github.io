@@ -5,35 +5,27 @@
   <head>
     <meta charset="utf-8">
     <title>S Y N E R G A</title>
-    <style>
-      html.ie { font-size: 16px; }
+    <style type="text/css">
+      html.ie8 { font-size: 16px; }
       body {
+	    font-size: 1rem;
         background-color: #fff;
         background-image:
           linear-gradient(to right, transparent 4.9em, #abcdef 4.9em, #abcdef 5em, transparent 5em),
           linear-gradient(#eee .1em, transparent .1em);
         background-size: 100% 1.25em;
       }
-
       #svg-curved-arrow path { all: inherit; }
-
       .logo-scrabble,
         .logo-definition {
+		position: relative;
         font-size: 1rem;
         text-align: center;
-        width: 45rem;
-        margin: 3rem auto;
+        width: 45em;
+        margin: 3em auto;
       }
-
-      .scrabble-word,
-        .scrabble-letter,
-        .definition-word,
-        .definition-word-type,
-        .definition-word-type a,
-        .definition-meaning,
-        .definition-meaning a { display: inline-block; position: relative; }
-
-      .scrabble-letter {
+	  .scrabble-word span { display: inline-block; position: relative; }
+      .scrabble-word span {
         width: 1.475em; height: 1.625em;
         font-family: sans-serif;
         font-weight: normal;
@@ -52,7 +44,7 @@
       		inset -0.0275em -0.0275em 0 rgba(143,128,82,0.6);
         margin: 0.25em 0.0725em;
       }
-      .scrabble-letter::after {
+      .scrabble-word span::after {
         position: absolute;
         right: 0; bottom: 0;
         font-family: sans-serif;
@@ -61,75 +53,77 @@
         transform: translate(-0.425em,1.675em);
         content: "1";
       }
-      .scrabble-value-2::after   { content: "2"; }
-      .scrabble-value-4::after   { content: "4"; }
-
+      span.scrabble-value-2::after   { content: "2"; }
+      span.scrabble-value-4::after   { content: "4"; }
       .definition-word { font-size: 3em; }
-      .syllable-stressed { font-weight: bold; }
-      .pronunciation-uh { font-style: italic; }
       .definition-word-type {
-        width: 75%;
+        width: 85%;
         font-size: 2.5em;
         font-style: italic;
         text-align: left;
-        margin-top: 0.5em;
+		margin: 0.5em auto 0em auto;
       }
       .definition-meaning {
-        width: 70%;
-        font-size: 1.5em;
-        line-height: 1.4em;
-        margin: 1em 0;
+        width: 100%;
+        font-size: 1.7em;
+        margin: 0.5em auto;
       }
       .definition-word-type a,
-        .definition-meaning a { text-decoration: none; color: rgba(68, 68, 200, 0.8); padding: 0 0.2em; line-height: 1.5rem; }
-
+        .definition-meaning a { text-decoration: none; color: rgb(116, 116, 200); padding: 0 0.2em; }
       .word-link { position: relative; }
       .word-link-note {
         text-align: center;
-        font-family: cursive;
-        color: rgba(200,0,0,0.7);
+        font-family: 'Comic Sans MS', cursive;
         color: gray;
       }
       .word-link-note,
-        .word-link-arrow { position: absolute; display: block; }
+        .word-link-arrow { position: absolute; display: block; transition: color .6s ease-in-out; width: 12em; }
       .word-link-arrow use { fill: none; stroke: gray; }
-      .word-link a:hover { color: red; }
-      .word-link a:hover .word-link-arrow use { stroke: red; }
+      .word-link a:hover .word-link-arrow use { stroke: rgb(230, 104, 104); }
+      .word-link a:hover { color: rgb(230, 104, 104); }
       .word-link a:hover .word-link-note,
-        .word-link a:hover .word-link-arrow { display: block; color: red; }
-
-      #word-noun-note,
-        #word-articles-note,
+        .word-link a:hover .word-link-arrow { color: rgb(230, 104, 104); }
+      #word-noun-note { font-size: 0.5em; }
+      #word-articles-note,
         #word-equipment-note,
-        #word-purpose-note { font-size: 1rem; width: 12rem; }
-      #word-noun-note      { top: -4.0em; left:   -5em; transform: rotate(-16deg); }
-      #word-articles-note  { top:  4.3em; left: -7.5em; transform: rotate( 16deg); }
-      #word-equipment-note { top: -3.6em; left:   -3em; transform: rotate(  3deg); }
-      #word-purpose-note   { top:  3.9em; left:    0;   transform: rotate( -6deg); }
+        #word-purpose-note { font-size: 0.7em; }
+      #go-games-note { font-size: 1.3em; }
+      #word-noun-note      { top: -2.9em; left: -5em; transform: rotate(-16deg); }
+      #word-articles-note  { top:  4.2em; left: -8em; transform: rotate( 16deg); }
+      #word-equipment-note { top:  3.8em; left: -1em; transform: rotate(  0deg); }
+      #word-purpose-note   { top:  4.2em; left: -4em; transform: rotate( -6deg); }
+      #go-games-note       { top: -1.2em; left: -3em; transform: rotate(  6deg); }
       #word-noun-arrow {
         width: 1em; height: 1em;
-        top: -1em; left: 0.6em;
-        transform: rotate(6deg) scale(-1,-1);
+        top: -0.7em; left: 0.7em;
+        transform: rotate(206deg);
       }
       #word-noun-arrow use { stroke-width: 4; }
       #word-articles-arrow {
         width: 2em; height: 2em;
-        top: 1em; left: -0.5em;
+        top: 1.4em; left: -0.5em;
         transform: rotate(-6deg) scaleX(-1);
       }
       #word-articles-arrow use { stroke-width: 3; }
       #word-equipment-arrow {
         width: 1.2em; height: 1.2em;
-        top: -1.2em; left: 1.6em;
-        transform: rotate(210deg) scaleY(1);
+        top: 1.4em; left: 1.6em;
+        transform: rotate(10deg);
       }
       #word-equipment-arrow use { stroke-width: 6; }
       #word-purpose-arrow {
         width: 1.5em; height: 1.5em;
-        top: 1.1em; left: 1.8em;
-        transform: rotate(2deg);
+        top: 1.4em; left: 0.8em;
+        transform: rotate(30deg);
       }
       #word-purpose-arrow use { stroke-width: 4; }
+	  #go-games { position: absolute; top: 4em; right: 8em; }
+      #go-games-arrow {
+        width: 4em; height: 4em;
+        top: 1em; left: 1.5em;
+        transform: rotate(-35deg) scaleX(-1);
+      }
+      #go-games-arrow use { stroke-width: 2.5; }
       @media (min-width: 0)     { html { font-size:  6px; } }
       @media (min-width: 380px) { html { font-size:  8px; } }
       @media (min-width: 480px) { html { font-size: 10px; } }
@@ -139,31 +133,34 @@
   <body>
     <svg style="display: none;">
       <symbol id="svg-curved-arrow" viewbox="0 0 75 100">
-        <path d="M 4.5,1.5 C 2,40 14,74 65,95" fill="none" stroke="black" stroke-width="3" />
-        <path d="m 49,97 17.5,-0.35 -8,-16.5"  fill="none" stroke="black" stroke-width="3" />
+        <path d="M 4.5,1.5 C 2,40 14,74 65,95" fill="none" stroke="black" stroke-width="3"/>
+        <path d="m 49,97 17.5,-0.35 -8,-16.5"  fill="none" stroke="black" stroke-width="3"/>
       </symbol>
     </svg>
     <h2 class="logo-scrabble">
-      <div class="scrabble-word">
-          <span class="scrabble-letter">S</span>
-          <span class="scrabble-letter scrabble-value-4">Y</span>
-          <span class="scrabble-letter">N</span>
-          <span class="scrabble-letter">E</span>
-          <span class="scrabble-letter">R</span>
-          <span class="scrabble-letter scrabble-value-2">G</span>
-          <span class="scrabble-letter">A</span>
-      </div>
+      <span class="scrabble-word">
+          <span>S</span>
+          <span class="scrabble-value-4">Y</span>
+          <span>N</span>
+          <span>E</span>
+          <span>R</span>
+          <span class="scrabble-value-2">G</span>
+          <span>A</span>
+      </span>
     </h2>
     <div class="logo-definition">
-      <div class="definition-word">
-        [ <span class="syllable-stressed">sin</span> - er - g<span class="pronunciation-uh">uh</span> ]
-      </div>
+      <div class="definition-word">[ <b>sin</b> - er - g<i>uh</i> ]</div>
       <div class="definition-word-type">
-        <span class="word-link"><a href="#">noun<span class="word-link-note" id="word-noun-note"> ( about this site ) </span><svg width="0" class="word-link-arrow" id="word-noun-arrow"><use xlink:href="#svg-curved-arrow" /></svg></a></span>
+        <span class="word-link"><a href="#">noun<span class="word-link-note" id="word-noun-note"> ( about this site ) </span><svg width="0" class="word-link-arrow" id="word-noun-arrow"><use xlink:href="#svg-curved-arrow"/></svg></a></span>
       </div>
       <div class="definition-meaning">
-        A set of <span class="word-link"><a href="#">articles<span class="word-link-note" id="word-articles-note"> ( words and thoughts ) </span><svg width="0" class="word-link-arrow" id="word-articles-arrow"><use xlink:href="#svg-curved-arrow" /></svg></a></span> or <span class="word-link"><a href="#">equipment<span class="word-link-note" id="word-equipment-note"> ( software and tools ) </span><svg width="0" class="word-link-arrow" id="word-equipment-arrow"><use xlink:href="#svg-curved-arrow" /></svg></a></span> needed for a specific <span class="word-link"><a href="#">purpose<span class="word-link-note" id="word-purpose-note"> ( projects and works ) </span><svg width="0" class="word-link-arrow" id="word-purpose-arrow"><use xlink:href="#svg-curved-arrow" /></svg></a></span>.
+        A set of <span class="word-link"><a href="#">articles<span class="word-link-note" id="word-articles-note"> ( words and thoughts ) </span><svg width="0" class="word-link-arrow" id="word-articles-arrow"><use xlink:href="#svg-curved-arrow"/></svg></a></span> or <span class="word-link"><a href="#">equipment<span class="word-link-note" id="word-equipment-note"> ( software and tools ) </span><svg width="0" class="word-link-arrow" id="word-equipment-arrow"><use xlink:href="#svg-curved-arrow"/></svg></a></span> needed for a specific <span class="word-link"><a href="#">purpose<span class="word-link-note" id="word-purpose-note"> ( projects and works ) </span><svg width="0" class="word-link-arrow" id="word-purpose-arrow"><use xlink:href="#svg-curved-arrow"/></svg></a></span>.
       </div>
+	  <div id="go-games"><span class="word-link"><a href="#">
+        <span class="word-link-note" id="go-games-note">even Games!</span>
+	    <svg width="0" class="word-link-arrow" id="go-games-arrow"><use xlink:href="#svg-curved-arrow"/></svg>
+	    </a></span>
+	  </div>
     </div>
   </body>
 </html>
